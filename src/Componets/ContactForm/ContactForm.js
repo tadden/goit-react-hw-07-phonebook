@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../redux/actions';
 import s from './ContactForm.module.css';
 import { getItems } from 'redux/selector';
+import * as operations from '../../redux/operations';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -34,7 +34,7 @@ export default function ContactForm() {
 
     duplicateValidator(name)
       ? alert(`${name} is already in contacts`)
-      : dispatch(actions.addContact(name, number));
+      : dispatch(operations.addContact({ name, number }));
 
     setName('');
     setNumber('');
